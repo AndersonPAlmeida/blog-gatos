@@ -1,0 +1,234 @@
+*{
+   margin: 0;
+   padding: 0;
+   border: 0;
+   box-sizing: border-box;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+}
+:root {
+   font-size: 62.5%; /* 10px */
+   --color-base-ciano-500: #065E7C;
+   --color-base-ciano-300: #387E96;
+   --color-base-white: #FFFFFF;
+   --color-base-black-700: #202024;
+   --color-base-black-400: #121214;
+   --max-width: 72rem;
+}
+html,
+body,
+input {
+  font-family: "Mulish", sans-serif;
+}
+
+#app {
+   display: grid;
+   min-height: 100vh;
+   grid-template-rows: max-content  1fr max-content max-content;
+   background-color: var(--color-base-white);
+   grid-template-areas: 
+      "header header"
+      "section section"
+      "aside aside"
+      "footer footer"
+   ;
+}
+#container {
+   width: clamp(43rem, 100%, var(--max-width));
+   margin:0 auto;
+   text-align: left;
+}
+
+header{
+   background-color: var(--color-base-ciano-500);
+   grid-area: header;
+   --start-Y: -100%;
+   animation: move .2s;
+}
+header .profile{
+   display: flex;
+   padding: 1.6rem 2.8rem;
+   height: max-content;
+   gap: 2.5rem;
+   justify-content: space-between;
+}
+.profile form{
+   flex: 1;
+}
+.profile input{
+   width: 100%;
+   height: 4rem;
+   border-radius: 4px;
+   background-color: var(--color-base-ciano-300);
+   color: var(--color-base-white);
+   padding: 1.2rem 1.6rem 1.2rem 1.4rem;
+}
+.profile input::placeholder{
+   color: var(--color-base-white);
+}
+.profile img{
+   width: 4rem;
+   height: 4rem;
+   border-radius: 50%;
+}
+.logo, .avatar, .like {
+   cursor: pointer;
+}
+.like:hover {
+   transform: rotate(360deg);
+   transition: all .5s ease-out;
+}
+
+.content{
+   grid-area: section;
+}
+.content .content-photo{
+   width: 100%;
+   border-radius:0 0 5px 0;
+   overflow: hidden;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 3rem;
+}
+.content-photo img {
+   width: 100%;
+   height: 100%;
+   border-radius:0 0 5px 0;
+   object-fit: cover;
+}
+.content-text{
+   grid-area: section;
+   padding: 0 2.6rem;
+   margin-bottom: 3rem;
+}
+.content-text h1{
+   font-size: 2.4rem;
+   font-weight: 700;
+   line-height: 3.84rem;
+   color: var(--color-base-black-700);
+}
+.content-text .buttons {
+   display: flex;
+   gap: 10px;
+   margin-bottom: 3rem;
+}
+.content-text .like {
+   width: 4rem;
+   background-color: var(--color-base-ciano-500);
+   padding: 1.2rem;
+   border-radius: 50%;
+   display: flex;
+   padding: 12px;
+   justify-content: center;
+   align-items: center;
+}
+.content-text p{
+   font-size: 1.6rem;
+   font-weight: 400;
+   line-height: 2.5rem;
+   color: var(--color-base-black-400);
+}
+
+aside{
+   grid-area: aside;
+   padding: 0 2.6rem;
+}
+aside h1 {
+   font-size: 2.4rem;
+   font-weight: 700;
+   line-height: 3.84rem;
+   color: var(--color-base-black-700);
+   margin-bottom: 3.2rem;
+}
+.cards .card {
+   display: flex;
+   gap: 1.6rem;
+   margin-bottom: 3.2rem;
+}
+.card img {
+   filter: grayscale(1);
+   transition: all 200ms ease-out;
+}
+.card img:hover {
+   filter: grayscale(0);
+   transform: scale(1.1);
+}
+.card figcaption h2 {
+   font-size: 1.8rem;
+   font-weight: 700;
+   line-height: 2.8rem;
+   color: var(--color-base-black-700);
+}
+.card figcaption p {
+   font-size: 1.4rem;
+   font-weight: 400;
+   line-height: 2.2rem;
+   color: var(--color-base-black-700);
+}
+
+section, aside {
+   transition: all .5s ease-out;
+}
+
+footer{
+   grid-area: footer;
+   background-color: var(--color-base-ciano-300);
+   text-align: center;
+   height: 6.4rem;
+   display: grid;
+   align-items: center;
+   --start-Y: 100%;
+   animation: move .2s;
+}
+footer p{
+   font-size: 1.6rem;
+   font-weight: 600;
+   color: var(--color-base-white);
+}
+
+@keyframes move {
+   from {
+      transform: translateY(var(--start-Y));
+   }
+}
+
+@keyframes appear {
+   0% {
+      opacity: 0;
+   }
+}
+
+@media (min-width: 1440px){
+   :root{
+      --max-width: 140rem;
+   }
+   #app{
+      grid-template-areas: 
+         "header header"
+         "section aside"
+         "section aside"
+         "footer footer"
+      ;
+      grid-template-columns: 1fr 50rem !important;
+      gap: 4.4rem 3.4rem;
+   }
+   header .profile{
+      padding: 1.6rem 11rem;
+   }
+
+   section .content{
+      width: clamp(80rem, 100%, calc(1140px - 50rem)) !important;
+      margin-left: 110rem !important;
+   }
+   .content-photo img {
+      max-width: 80rem;
+   }
+   .content-text{
+      margin-bottom: 0;
+   }
+   aside {
+      padding-left: 0 !important;
+      padding-right: 11rem !important;
+   }
+}
