@@ -32,7 +32,6 @@ input {
    ;
 }
 #container, #article {
-   /* max-width:var(--max-width); */
    width: clamp(28rem, 100%, var(--max-width));
    margin:0 auto;
    text-align: left;
@@ -90,6 +89,7 @@ header .profile{
    justify-content: center;
    align-items: center;
    margin-bottom: 3rem;
+   flex: 1;
 }
 .content-photo img {
    width: 100%;
