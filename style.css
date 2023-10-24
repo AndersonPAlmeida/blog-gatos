@@ -24,22 +24,22 @@ input {
 #app {
    display: grid;
    min-height: 100vh;
-   grid-template-rows: max-content  1fr max-content max-content;
+   grid-template-rows: max-content max-content;
    background-color: var(--color-base-white);
    grid-template-areas: 
-      "header header"
       "section section"
       "aside aside"
-      "footer footer"
    ;
 }
-#container {
-   width: clamp(43rem, 100%, var(--max-width));
+#container, #article {
+   /* max-width:var(--max-width); */
+   width: clamp(28rem, 100%, var(--max-width));
    margin:0 auto;
    text-align: left;
 }
 
 header{
+   width: 100%;
    background-color: var(--color-base-ciano-500);
    grid-area: header;
    --start-Y: -100%;
@@ -172,6 +172,7 @@ section, aside {
 }
 
 footer{
+   width: 100%;
    grid-area: footer;
    background-color: var(--color-base-ciano-300);
    text-align: center;
@@ -204,11 +205,11 @@ footer p{
       --max-width: 140rem;
    }
    #app{
-      grid-template-areas: 
-         "header header"
+      margin: 4.4rem auto;      
+      max-width: 122rem; 
+      grid-template-areas:
          "section aside"
          "section aside"
-         "footer footer"
       ;
       grid-template-columns: 1fr 50rem !important;
       gap: 4.4rem 3.4rem;
